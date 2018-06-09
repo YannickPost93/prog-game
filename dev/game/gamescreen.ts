@@ -7,7 +7,7 @@ class GameScreen {
     private score:number = 0
     private scoreElement2:Element
     private score2:number = 0
-    //private winner: String
+    public winner: String
 
     constructor(g:Game) {
         this.game = g
@@ -50,18 +50,18 @@ class GameScreen {
             
 
             if(this.score == 20){
-                // go to endscreen
-                //this.winner = "player 1"
+                this.target.deleteTarget()
+                let winner = "player 1"
                 this.switchScreens()
-                console.log('score=10')
+                console.log('p1 wins')
                 
             }
 
             if(this.score2 == 20){
-                // go to endscreen
-                //this.winner = "player 2"
+                this.target.deleteTarget()
+                let winner = "player 2"
                 this.switchScreens()
-                console.log('score=10')
+                console.log('p2 wins')
                 
             }
             

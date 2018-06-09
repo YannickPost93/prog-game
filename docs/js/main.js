@@ -24,12 +24,15 @@ var EndScreen = (function () {
         var _this = this;
         this.game = g;
         this.restartbtn = document.createElement("startbtn");
+        this.winnerElement = document.createElement('winnerElement');
         var container = document.getElementsByTagName("container")[0];
         container.appendChild(this.restartbtn);
+        container.appendChild(this.winnerElement);
         this.restartbtn.addEventListener("click", function () { return _this.switchScreens(); });
     }
     EndScreen.prototype.update = function () {
         this.restartbtn.innerHTML = "RESTART GAME";
+        this.winnerElement.innerHTML = this.winner;
     };
     EndScreen.prototype.switchScreens = function () {
         console.log('switch to gamescreen');
@@ -72,12 +75,16 @@ var GameScreen = (function () {
             this.scoreElement2.innerHTML = "Score player 2: " + this.score2;
         }
         if (this.score == 20) {
+            this.target.deleteTarget();
+            var winner = "player 1";
             this.switchScreens();
-            console.log('score=10');
+            console.log('p1 wins');
         }
         if (this.score2 == 20) {
+            this.target.deleteTarget();
+            var winner = "player 2";
             this.switchScreens();
-            console.log('score=10');
+            console.log('p2 wins');
         }
         this.playerone.update();
         this.playertwo.update();
@@ -274,8 +281,10 @@ var StartScreen = (function () {
         var _this = this;
         this.game = g;
         this.startbtn = document.createElement("startbtn");
+        this.controls = document.createElement("controls");
         var container = document.getElementsByTagName("container")[0];
         container.appendChild(this.startbtn);
+        container.appendChild(this.controls);
         this.startbtn.addEventListener("click", function () { return _this.switchScreens(); });
     }
     StartScreen.prototype.update = function () {

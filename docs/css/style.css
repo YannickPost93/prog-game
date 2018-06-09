@@ -24,7 +24,16 @@ container {
     background-size: cover;
 }
 
-startbtn {
+controls {
+    background-image: url(../images/controls.png);
+    width: 400px;
+    height: 150px;
+    top: 10vh;
+    left: 33vw;
+    transition: 0.5s ease-in;
+}
+
+startbtn, restartbtn {
     background-color:#efefef;
     color:#72b5a4;
     padding: 20px;
@@ -35,7 +44,7 @@ startbtn {
     border:2px solid #efefef;
     cursor:pointer;
 }
-startbtn:hover {
+startbtn:hover, restartbtn:hover {
     background-color:#72b5a4;
     color:#efefef;
     
@@ -43,13 +52,13 @@ startbtn:hover {
 target {
     width:40px;
     height:40px;
-    background-color:#444;
+    background-color:#fff;
     border-radius:50%;
 }
 playerone {
     width:80px;
     height:80px;
-    background-color:#b71e1e;
+    background-color:#c14242;
 }
 playertwo {
     width:80px;
