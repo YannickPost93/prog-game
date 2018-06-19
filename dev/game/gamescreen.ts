@@ -1,18 +1,20 @@
 class GameScreen {
     private game:Game
-    private playerone:Playerone
-    private playertwo:PlayerTwo
+    
+    private playerone:Player
+   private playertwo:Player
+
     private target:Target
     private scoreElement:Element
     private score:number = 0
     private scoreElement2:Element
     private score2:number = 0
-    public winner: String
+    //public winner: String
 
     constructor(g:Game) {
         this.game = g
-        this.playerone = new Playerone(this)
-        this.playertwo = new PlayerTwo(this)
+        this.playerone = new Player(this, 87,68,83,65, "playerone") // arrows
+        this.playertwo = new Player(this, 38, 39, 40, 37, "playertwo")  // w a s d
         this.target = new Target(this)
 
         this.scoreElement = document.createElement("scoreElement")
@@ -85,9 +87,9 @@ class GameScreen {
     public update():void {
     }
 
-    private deleteTarget(){
-        console.log('deleting target')
-    }
+    // private deleteTarget(){
+    //     console.log('deleting target')
+    // }
 
     private switchScreens(){
         console.log('switch to gamescreen')

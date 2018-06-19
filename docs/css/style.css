@@ -55,14 +55,15 @@ target {
     background-color:#fff;
     border-radius:50%;
 }
-playerone {
+player {
     width:80px;
     height:80px;
+}
+.playerone {
+   
     background-color:#c14242;
 }
-playertwo {
-    width:80px;
-    height:80px;
+.playertwo {
     background-color:#daea25;
 }
 

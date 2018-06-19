@@ -1,5 +1,8 @@
-class PlayerTwo {
-    private playertwo:HTMLElement
+class Player {
+    
+    private div: HTMLElement
+    private playerone: Player
+    private playertwo: Player
     private gamescreen:GameScreen
     
     private x: number
@@ -17,23 +20,27 @@ class PlayerTwo {
     private rightSpeed: number = 0
     private leftSpeed: number = 0
 
-    constructor(p:GameScreen) {
+    constructor(p:GameScreen, up:number,right:number,down:number,left:number, cls:string) {
         this.gamescreen = p
-        this.playertwo = document.createElement("playertwo") 
+        
+        this.div = document.createElement("player") 
+        this.div.classList.add(cls) // skin
+        console.log(cls);
+        
         let container = document.getElementsByTagName("container")[0]
-        container.appendChild(this.playertwo)
+        container.appendChild(this.div)
 
-        this.upkey = 38
-        this.downkey = 40
-        this.leftkey = 37
-        this.rightkey = 39
+        this.upkey = up
+        this.rightkey = right
+        this.downkey = down
+        this.leftkey = left
+
 
         this.x = 0
-        this.y = 400
+        this.y = 200
 
         window.addEventListener("keydown", (e: KeyboardEvent) => this.onKeyDown(e))
         window.addEventListener("keyup", (e: KeyboardEvent) => this.onKeyUp(e))
-
 
     }
 
@@ -72,7 +79,7 @@ class PlayerTwo {
     }
 
     public getRectangle() {
-        return this.playertwo.getBoundingClientRect()
+       return this.div.getBoundingClientRect()
     }
 
     
@@ -81,10 +88,44 @@ class PlayerTwo {
         let newY = this.y - this.upSpeed + this.downSpeed
         let newX = this.x - this.leftSpeed + this.rightSpeed
 
+        // check of de paddle binnen beeld blijft
         if (newY > 0 && newY + 80 < window.innerHeight) this.y = newY
         if (newX > 0 && newX + 80 < window.innerWidth) this.x = newX
 
-        this.playertwo.style.transform = `translate(${this.x}px, ${this.y}px)`
+        this.div.style.transform = `translate(${this.x}px, ${this.y}px)`
     }
     
 }
+
+// class PlayerOne extends Player{
+
+//     constructor(){
+    
+
+//         this.upkey = 87
+//         this.downkey = 83
+//         this.leftkey = 65
+//         this.rightkey = 68
+
+//         this.playerone = document.createElement("playerone") 
+//         let container = document.getElementsByTagName("container")[0]
+//         container.appendChild(this.playerone)
+//     }
+
+// }
+
+// class PlayerTwo extends Player {
+    
+//     constructor(){
+//         super();
+
+//         this.upkey = 38
+//         this.downkey = 40
+//         this.leftkey = 37
+//         this.rightkey = 39
+
+//         this.playertwo = document.createElement("playertwo") 
+//         let container = document.getElementsByTagName("container")[0]
+//         container.appendChild(this.playertwo)
+//     }
+// }

@@ -4,7 +4,7 @@ class EndScreen {
     private restartbtn : HTMLElement
     
     private winnerElement: HTMLElement
-    public winner: string
+    // public winner: string
 
     constructor(g:Game) {
         this.game = g
@@ -22,7 +22,7 @@ class EndScreen {
     }
     public update() { 
         this.restartbtn.innerHTML = "RESTART GAME"
-        this.winnerElement.innerHTML = this.winner
+        //this.winnerElement.innerHTML = this.winner
 
     }
 

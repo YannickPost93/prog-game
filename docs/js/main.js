@@ -32,7 +32,6 @@ var EndScreen = (function () {
     }
     EndScreen.prototype.update = function () {
         this.restartbtn.innerHTML = "RESTART GAME";
-        this.winnerElement.innerHTML = this.winner;
     };
     EndScreen.prototype.switchScreens = function () {
         console.log('switch to gamescreen');
@@ -46,8 +45,8 @@ var GameScreen = (function () {
         this.score = 0;
         this.score2 = 0;
         this.game = g;
-        this.playerone = new Playerone(this);
-        this.playertwo = new PlayerTwo(this);
+        this.playerone = new Player(this, 87, 68, 83, 65, "playerone");
+        this.playertwo = new Player(this, 38, 39, 40, 37, "playertwo");
         this.target = new Target(this);
         this.scoreElement = document.createElement("scoreElement");
         this.scoreElement2 = document.createElement("scoreElement2");
@@ -99,9 +98,6 @@ var GameScreen = (function () {
     };
     GameScreen.prototype.update = function () {
     };
-    GameScreen.prototype.deleteTarget = function () {
-        console.log('deleting target');
-    };
     GameScreen.prototype.switchScreens = function () {
         console.log('switch to gamescreen');
         this.game.emptyScreen();
@@ -109,8 +105,8 @@ var GameScreen = (function () {
     };
     return GameScreen;
 }());
-var Playerone = (function () {
-    function Playerone(p) {
+var Player = (function () {
+    function Player(p, up, right, down, left, cls) {
         var _this = this;
         this.score = 0;
         this.downSpeed = 0;
@@ -118,19 +114,21 @@ var Playerone = (function () {
         this.rightSpeed = 0;
         this.leftSpeed = 0;
         this.gamescreen = p;
-        this.playerone = document.createElement("playerone");
+        this.div = document.createElement("player");
+        this.div.classList.add(cls);
+        console.log(cls);
         var container = document.getElementsByTagName("container")[0];
-        container.appendChild(this.playerone);
-        this.upkey = 87;
-        this.downkey = 83;
-        this.leftkey = 65;
-        this.rightkey = 68;
+        container.appendChild(this.div);
+        this.upkey = up;
+        this.rightkey = right;
+        this.downkey = down;
+        this.leftkey = left;
         this.x = 0;
         this.y = 200;
         window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
         window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
     }
-    Playerone.prototype.onKeyDown = function (e) {
+    Player.prototype.onKeyDown = function (e) {
         switch (e.keyCode) {
             case this.upkey:
                 this.upSpeed = 10;
@@ -146,7 +144,7 @@ var Playerone = (function () {
                 break;
         }
     };
-    Playerone.prototype.onKeyUp = function (e) {
+    Player.prototype.onKeyUp = function (e) {
         switch (e.keyCode) {
             case this.upkey:
                 this.upSpeed = 0;
@@ -162,86 +160,19 @@ var Playerone = (function () {
                 break;
         }
     };
-    Playerone.prototype.getRectangle = function () {
-        return this.playerone.getBoundingClientRect();
+    Player.prototype.getRectangle = function () {
+        return this.div.getBoundingClientRect();
     };
-    Playerone.prototype.update = function () {
+    Player.prototype.update = function () {
         var newY = this.y - this.upSpeed + this.downSpeed;
         var newX = this.x - this.leftSpeed + this.rightSpeed;
         if (newY > 0 && newY + 80 < window.innerHeight)
             this.y = newY;
         if (newX > 0 && newX + 80 < window.innerWidth)
             this.x = newX;
-        this.playerone.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
+        this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
-    return Playerone;
-}());
-var PlayerTwo = (function () {
-    function PlayerTwo(p) {
-        var _this = this;
-        this.score = 0;
-        this.downSpeed = 0;
-        this.upSpeed = 0;
-        this.rightSpeed = 0;
-        this.leftSpeed = 0;
-        this.gamescreen = p;
-        this.playertwo = document.createElement("playertwo");
-        var container = document.getElementsByTagName("container")[0];
-        container.appendChild(this.playertwo);
-        this.upkey = 38;
-        this.downkey = 40;
-        this.leftkey = 37;
-        this.rightkey = 39;
-        this.x = 0;
-        this.y = 400;
-        window.addEventListener("keydown", function (e) { return _this.onKeyDown(e); });
-        window.addEventListener("keyup", function (e) { return _this.onKeyUp(e); });
-    }
-    PlayerTwo.prototype.onKeyDown = function (e) {
-        switch (e.keyCode) {
-            case this.upkey:
-                this.upSpeed = 10;
-                break;
-            case this.downkey:
-                this.downSpeed = 10;
-                break;
-            case this.leftkey:
-                this.leftSpeed = 10;
-                break;
-            case this.rightkey:
-                this.rightSpeed = 10;
-                break;
-        }
-    };
-    PlayerTwo.prototype.onKeyUp = function (e) {
-        switch (e.keyCode) {
-            case this.upkey:
-                this.upSpeed = 0;
-                break;
-            case this.downkey:
-                this.downSpeed = 0;
-                break;
-            case this.leftkey:
-                this.leftSpeed = 0;
-                break;
-            case this.rightkey:
-                this.rightSpeed = 0;
-                break;
-        }
-    };
-    PlayerTwo.prototype.getRectangle = function () {
-        return this.playertwo.getBoundingClientRect();
-    };
-    PlayerTwo.prototype.update = function () {
-        var newY = this.y - this.upSpeed + this.downSpeed;
-        var newX = this.x - this.leftSpeed + this.rightSpeed;
-        if (newY > 0 && newY + 80 < window.innerHeight)
-            this.y = newY;
-        if (newX > 0 && newX + 80 < window.innerWidth)
-            this.x = newX;
-        this.playertwo.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
-    };
-    return PlayerTwo;
+    return Player;
 }());
 var Target = (function () {
     function Target(p) {
