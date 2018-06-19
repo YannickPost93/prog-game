@@ -4,11 +4,14 @@ class EndScreen {
     private restartbtn : HTMLElement
     
     private winnerElement: HTMLElement
+    public target : HTMLElement
+    
     // public winner: string
 
     constructor(g:Game) {
         this.game = g
         //console.log(this.winner)
+        
         this.restartbtn = document.createElement("startbtn")
         this.winnerElement = document.createElement('winnerElement')
         
@@ -28,8 +31,16 @@ class EndScreen {
 
     private switchScreens(){
         console.log('switch to gamescreen')
+        
         this.game.emptyScreen()
         this.game.showScreen(new GameScreen(this.game))
+    }
+
+    public emptyScreen(){
+        console.log('emptyScreen')
+        this.target.remove()
+        let container = document.getElementsByTagName("container")[0]
+        container.innerHTML = ""
     }
     
 }

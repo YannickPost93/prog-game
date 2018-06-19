@@ -38,6 +38,12 @@ var EndScreen = (function () {
         this.game.emptyScreen();
         this.game.showScreen(new GameScreen(this.game));
     };
+    EndScreen.prototype.emptyScreen = function () {
+        console.log('emptyScreen');
+        this.target.remove();
+        var container = document.getElementsByTagName("container")[0];
+        container.innerHTML = "";
+    };
     return EndScreen;
 }());
 var GameScreen = (function () {
@@ -73,15 +79,13 @@ var GameScreen = (function () {
             this.score2++;
             this.scoreElement2.innerHTML = "Score player 2: " + this.score2;
         }
-        if (this.score == 20) {
-            this.target.deleteTarget();
-            var winner = "player 1";
+        if (this.score == 5) {
+            this.emptyScreen();
             this.switchScreens();
             console.log('p1 wins');
         }
-        if (this.score2 == 20) {
-            this.target.deleteTarget();
-            var winner = "player 2";
+        if (this.score2 == 5) {
+            this.emptyScreen();
             this.switchScreens();
             console.log('p2 wins');
         }
@@ -99,9 +103,14 @@ var GameScreen = (function () {
     GameScreen.prototype.update = function () {
     };
     GameScreen.prototype.switchScreens = function () {
-        console.log('switch to gamescreen');
-        this.game.emptyScreen();
+        console.log('switch to endscreen');
         this.game.showScreen(new EndScreen(this.game));
+    };
+    GameScreen.prototype.emptyScreen = function () {
+        this.target.deleteTarget();
+        console.log('emptyScreen');
+        var container = document.getElementsByTagName("container")[0];
+        container.innerHTML = "";
     };
     return GameScreen;
 }());

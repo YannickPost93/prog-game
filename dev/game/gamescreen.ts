@@ -51,17 +51,15 @@ class GameScreen {
 
             
 
-            if(this.score == 20){
-                this.target.deleteTarget()
-                let winner = "player 1"
+            if(this.score == 5){
+                this.emptyScreen()
                 this.switchScreens()
                 console.log('p1 wins')
                 
             }
 
-            if(this.score2 == 20){
-                this.target.deleteTarget()
-                let winner = "player 2"
+            if(this.score2 == 5){
+                this.emptyScreen()
                 this.switchScreens()
                 console.log('p2 wins')
                 
@@ -87,14 +85,19 @@ class GameScreen {
     public update():void {
     }
 
-    // private deleteTarget(){
-    //     console.log('deleting target')
-    // }
 
     private switchScreens(){
-        console.log('switch to gamescreen')
-        this.game.emptyScreen()
+        console.log('switch to endscreen')
+        
         this.game.showScreen(new EndScreen(this.game))
+    }
+
+    public emptyScreen(){
+        this.target.deleteTarget()
+        console.log('emptyScreen')
+        let container = document.getElementsByTagName("container")[0]
+        container.innerHTML = ""
+        
     }
     
 }

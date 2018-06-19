@@ -3,13 +3,13 @@ Game Programmeren
 Speelbare game
 Link naar de online speelbare game.
 
-Checklist
+## Checklist
 x De game heeft een startscherm en een eindscherm.
  Er zijn geen bugs.
 Toelichting OOP
 Licht toe waar en waarom je deze OOP principes hebt toegepast
 
-Classes
+## Classes
 Encapsulation
 Composition
 Inheritance
