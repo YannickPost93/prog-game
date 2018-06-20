@@ -6,11 +6,11 @@ class EndScreen {
     private winnerElement: HTMLElement
     public target : HTMLElement
     
-    // public winner: string
+    //public winner: String
 
     constructor(g:Game) {
         this.game = g
-        //console.log(this.winner)
+       // console.log(this.winner)
         
         this.restartbtn = document.createElement("startbtn")
         this.winnerElement = document.createElement('winnerElement')
@@ -20,7 +20,7 @@ class EndScreen {
         container.appendChild(this.winnerElement)
                 
         this.restartbtn.addEventListener("click", ()=> this.switchScreens())
-
+        
              
     }
     public update() { 

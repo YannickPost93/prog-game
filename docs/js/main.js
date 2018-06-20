@@ -59,13 +59,18 @@ var GameScreen = (function () {
         var container = document.getElementsByTagName('container')[0];
         container.appendChild(this.scoreElement);
         container.appendChild(this.scoreElement2);
-        this.gameLoop();
+        this.scoreElement2.innerHTML = "Score player 2: ";
+        this.scoreElement.innerHTML = "Score player 1: ";
     }
-    GameScreen.prototype.gameLoop = function () {
-        var _this = this;
+    GameScreen.prototype.update = function () {
+        this.playerone.update();
+        this.playertwo.update();
+        this.target.update();
         var hit = this.checkCollision(this.playerone.getRectangle(), this.target.getRectangle());
         if (hit) {
-            console.log('hit');
+            console.log('hit 1');
+            console.log(this.playerone.getRectangle());
+            console.log(this.target.getRectangle());
             this.target.deleteTarget();
             this.target = new Target(this);
             this.score++;
@@ -73,34 +78,28 @@ var GameScreen = (function () {
         }
         var hit2 = this.checkCollision(this.playertwo.getRectangle(), this.target.getRectangle());
         if (hit2) {
-            console.log('hit2');
+            console.log('hit 2');
             this.target.deleteTarget();
             this.target = new Target(this);
             this.score2++;
             this.scoreElement2.innerHTML = "Score player 2: " + this.score2;
         }
-        if (this.score == 5) {
+        if (this.score == 2) {
             this.emptyScreen();
             this.switchScreens();
             console.log('p1 wins');
         }
-        if (this.score2 == 5) {
+        if (this.score2 == 2) {
             this.emptyScreen();
             this.switchScreens();
             console.log('p2 wins');
         }
-        this.playerone.update();
-        this.playertwo.update();
-        this.target.update();
-        requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     GameScreen.prototype.checkCollision = function (a, b) {
         return (a.left <= b.right &&
             b.left <= a.right &&
             a.top <= b.bottom &&
             b.top <= a.bottom);
-    };
-    GameScreen.prototype.update = function () {
     };
     GameScreen.prototype.switchScreens = function () {
         console.log('switch to endscreen');
@@ -187,6 +186,7 @@ var Target = (function () {
     function Target(p) {
         this.speedX = 0;
         this.speedY = 0;
+        console.log('making target');
         this.gamescreen = p;
         this.target = document.createElement("target");
         var container = document.getElementsByTagName("container")[0];
@@ -202,7 +202,7 @@ var Target = (function () {
         if (this.y + 40 > window.innerHeight || this.y < 0) {
             this.speedY *= -1;
         }
-        if (this.x - 40 > window.innerWidth || this.x < 0) {
+        if (this.x + 40 > window.innerWidth || this.x < 0) {
             this.speedX *= -1;
         }
         this.target.style.transform = "translate(" + this.x + "px, " + this.y + "px)";

@@ -10,6 +10,8 @@ class Target {
     private target : HTMLElement
     
     constructor(p:GameScreen) {
+
+        console.log('making target')
       this.gamescreen = p
 
       this.target = document.createElement("target")
@@ -23,6 +25,7 @@ class Target {
       this.speedY = Math.round(Math.random() * 10)-5
 
       //if(Math.random()>0.5) this.speedX *= -1
+      //this.target.style.transform = `translate(${this.x}px, ${this.y}px)` 
 
     }
     
@@ -34,7 +37,7 @@ class Target {
             this.speedY *= -1
         }
         
-        if (this.x - 40 > window.innerWidth || this.x < 0 ) { 
+        if (this.x + 40 > window.innerWidth || this.x < 0 ) { 
             this.speedX *= -1
         } 
                         

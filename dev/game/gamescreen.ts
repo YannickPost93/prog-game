@@ -19,19 +19,27 @@ class GameScreen {
 
         this.scoreElement = document.createElement("scoreElement")
         this.scoreElement2 = document.createElement("scoreElement2")
-        //this.scoreElement = document.getElementsByTagName('ScoreElement')[0]
         let container = document.getElementsByTagName('container')[0]
         container.appendChild(this.scoreElement)
         container.appendChild(this.scoreElement2)
+
+        this.scoreElement2.innerHTML = "Score player 2: "
+        this.scoreElement.innerHTML = "Score player 1: "
         
-        this.gameLoop()
     }
     
-    private gameLoop(){
+    public update(){
+        
+        this.playerone.update()
+        this.playertwo.update()
+        this.target.update()
        
             let hit = this.checkCollision(this.playerone.getRectangle(), this.target.getRectangle())
             if(hit){
-                console.log('hit')
+                console.log('hit 1')
+                console.log(this.playerone.getRectangle())
+                console.log(this.target.getRectangle())
+                
                 this.target.deleteTarget()
                 this.target = new Target(this)
                 
@@ -41,7 +49,7 @@ class GameScreen {
 
             let hit2 = this.checkCollision(this.playertwo.getRectangle(), this.target.getRectangle())
             if(hit2){
-                console.log('hit2')
+                console.log('hit 2')
                 this.target.deleteTarget()
                 this.target = new Target(this)
                 
@@ -49,30 +57,27 @@ class GameScreen {
                 this.scoreElement2.innerHTML = "Score player 2: "+ this.score2
             }
 
-            
 
-            if(this.score == 5){
+            if(this.score == 2){
                 this.emptyScreen()
                 this.switchScreens()
                 console.log('p1 wins')
                 
+                //let winner = "player one"
+
             }
 
-            if(this.score2 == 5){
+            if(this.score2 == 2){
                 this.emptyScreen()
                 this.switchScreens()
                 console.log('p2 wins')
-                
+                //let winner = "player one"
             }
             
+
         
 
-        this.playerone.update()
-        this.playertwo.update()
-        this.target.update()
 
-
-        requestAnimationFrame(()=>this.gameLoop())
     }
 
     private checkCollision(a: ClientRect, b: ClientRect) {
@@ -82,13 +87,10 @@ class GameScreen {
             b.top <= a.bottom)
     }
 
-    public update():void {
-    }
-
+  
 
     private switchScreens(){
-        console.log('switch to endscreen')
-        
+        console.log('switch to endscreen')  
         this.game.showScreen(new EndScreen(this.game))
     }
 
