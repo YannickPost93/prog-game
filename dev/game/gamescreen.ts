@@ -44,7 +44,7 @@ class GameScreen {
                 this.target = new Target(this)
                 
                 this.score++
-                this.scoreElement.innerHTML = "Score player 1: "+ this.score
+                this.scoreElement.innerHTML = "Score player 1: "+ this.score + "/20"
             }
 
             let hit2 = this.checkCollision(this.playertwo.getRectangle(), this.target.getRectangle())
@@ -54,11 +54,11 @@ class GameScreen {
                 this.target = new Target(this)
                 
                 this.score2++
-                this.scoreElement2.innerHTML = "Score player 2: "+ this.score2
+                this.scoreElement2.innerHTML = "Score player 2: "+ this.score2 + "/20"
             }
 
 
-            if(this.score == 2){
+            if(this.score == 20){
                 this.emptyScreen()
                 this.switchScreens()
                 console.log('p1 wins')
@@ -67,7 +67,7 @@ class GameScreen {
 
             }
 
-            if(this.score2 == 2){
+            if(this.score2 == 20){
                 this.emptyScreen()
                 this.switchScreens()
                 console.log('p2 wins')
