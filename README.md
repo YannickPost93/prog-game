@@ -47,11 +47,33 @@ class StartScreen {
 ```
 
 ## Classes
-Encapsulation
-Composition
-Inheritance
-Klassendiagram
-Een klassendiagram van de game.
+### Encapsulation<br>
+In mijn code zorg ik er voor dat de variabelen die niet ergens anders gebruikt hoeven te worden op private staan. Zie de voorbeeld code hieronder waar ik alle onderdelen van mijn game alleen maar in de class gamescreen gebruik.
+
+```javascript
+class GameScreen {
+    private game:Game
+    
+    private playerone:Player
+    private playertwo:Player
+
+    private target:Target
+    private scoreElement:Element
+    private score:number = 0
+    private scoreElement2:Element
+    private score2:number = 0
+
+    constructor(g:Game) {
+    }
+}
+    ```
+
+### Composition
+
+### Inheritance
+
+### Klassendiagram
+
 
 ## Peer review
 Een link naar de peer review die in week 6 is gedaan.
