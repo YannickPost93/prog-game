@@ -80,7 +80,7 @@ In mijn code maak ik gebruik van composition. Je kunt bijvoorbeeld zien dat mijn
 In deze game heb ik geen inheritance nodig gehad, omdat er geen classes waren die dingen nodig hadden van een andere class.
 
 ### Klassendiagram
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+![alt text](https://github.com/YannickPost93/prog-game/blob/master/docs/images/klassendiagram.png)
 
 
 
