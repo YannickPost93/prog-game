@@ -85,7 +85,7 @@ In deze game heb ik geen inheritance nodig gehad, omdat er geen classes waren di
 
 
 ## Peer review
-Een link naar de peer review die in week 6 is gedaan.
+<a href="https://github.com/DennisTimmers01/prog-gameproject/issues/1">Link naar peer review</a>
 
 ## Extra uitdaging
 In deze game heb ik een multiplayer element toegevoegd. Mensen kunnen local tegen elkaar spelen door gebruik te maken van WASD of de pijltjestoetsen
