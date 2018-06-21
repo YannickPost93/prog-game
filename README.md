@@ -1,11 +1,11 @@
 # Game Programmeren
 
 ## Speelbare game
-<a href="#">link</a>
+<a href="https://yannickpost93.github.io/prog-game/">Link naar de speelbare game</a>
 
 ## Checklist
 x De game heeft een startscherm en een eindscherm.
- Er zijn geen bugs.
+x Er zijn geen bugs.
 
 ## Toelichting OOP
 Ik heb classes gebruikt om mijn game werkend te krijgen. Hieronder zie je bijvoorbeeld de class van het startscherm, waarin alle onderdelen aangemaakt worden die op het scherm te zien moeten zijn. 
