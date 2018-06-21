@@ -1,7 +1,7 @@
-Game Programmeren
+### Game Programmeren
 
-Speelbare game
-Link naar de online speelbare game.
+## Speelbare game
+<a href="#">link</a>
 
 ## Checklist
 x De game heeft een startscherm en een eindscherm.
