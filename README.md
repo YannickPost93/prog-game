@@ -4,7 +4,7 @@
 <a href="https://yannickpost93.github.io/prog-game/">Link naar de speelbare game</a>
 
 ## Checklist
-x De game heeft een startscherm en een eindscherm.
+x De game heeft een startscherm en een eindscherm. </br>
 x Er zijn geen bugs.
 
 ## Toelichting OOP
