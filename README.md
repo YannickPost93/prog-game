@@ -1,4 +1,4 @@
-### Game Programmeren
+# Game Programmeren
 
 ## Speelbare game
 <a href="#">link</a>
