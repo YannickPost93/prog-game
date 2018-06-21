@@ -1,21 +1,79 @@
-Game Programmeren
+# Game Programmeren
 
-Speelbare game
-Link naar de online speelbare game.
+## Speelbare game
+<a href="https://yannickpost93.github.io/prog-game/">Link naar de speelbare game</a>
 
 ## Checklist
-x De game heeft een startscherm en een eindscherm.
- Er zijn geen bugs.
+x De game heeft een startscherm en een eindscherm. </br>
+x Er zijn geen bugs.
 
 ## Toelichting OOP
-Licht toe waar en waarom je deze OOP principes hebt toegepast
+Ik heb classes gebruikt om mijn game werkend te krijgen. Hieronder zie je bijvoorbeeld de class van het startscherm, waarin alle onderdelen aangemaakt worden die op het scherm te zien moeten zijn. 
+
+```javascript
+class StartScreen {
+
+    private game : Game
+    private startbtn : HTMLElement
+    private controls : HTMLElement
+
+    constructor(g:Game) {
+        // console.log('startscreen made')
+        this.game = g
+
+        this.startbtn = document.createElement("startbtn")
+        this.controls = document.createElement("controls")
+        
+        let container = document.getElementsByTagName("container")[0]
+        container.appendChild(this.startbtn)
+        container.appendChild(this.controls)
+                
+        this.startbtn.addEventListener("click", ()=> this.switchScreens())
+    }
+
+    public update() {
+        //console.log('startscreen update')
+        this.startbtn.innerHTML = "START GAME"
+
+    }
+
+    private switchScreens(){
+        console.log('switch to gamescreen')
+        this.game.emptyScreen()
+        this.game.showScreen(new GameScreen(this.game))
+    }
+    
+}
+```
 
 ## Classes
-Encapsulation
-Composition
-Inheritance
-Klassendiagram
-Een klassendiagram van de game.
+### Encapsulation<br>
+In mijn code zorg ik er voor dat de variabelen die niet ergens anders gebruikt hoeven te worden op private staan. Zie de voorbeeld code hieronder waar ik alle onderdelen van mijn game alleen maar in de class gamescreen gebruik.
+
+```javascript
+class GameScreen {
+    private game:Game
+    
+    private playerone:Player
+    private playertwo:Player
+
+    private target:Target
+    private scoreElement:Element
+    private score:number = 0
+    private scoreElement2:Element
+    private score2:number = 0
+
+    constructor(g:Game) {
+    }
+}
+    ```
+
+### Composition
+
+### Inheritance
+
+### Klassendiagram
+
 
 ## Peer review
 Een link naar de peer review die in week 6 is gedaan.
