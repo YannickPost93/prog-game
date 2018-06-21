@@ -66,13 +66,22 @@ class GameScreen {
     constructor(g:Game) {
     }
 }
-    ```
+```
 
 ### Composition
+In mijn code maak ik gebruik van composition. Je kunt bijvoorbeeld zien dat mijn gamescreen twee players en een target heeft.
+```javascript
+    this.playerone = new Player(this, 87,68,83,65, "playerone") // arrows
+    this.playertwo = new Player(this, 38, 39, 40, 37, "playertwo")  // w a s d
+    this.target = new Target(this)
+```
 
 ### Inheritance
+In deze game heb ik geen inheritance nodig gehad, omdat er geen classes waren die dingen nodig hadden van een andere class.
 
 ### Klassendiagram
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+
 
 
 ## Peer review
